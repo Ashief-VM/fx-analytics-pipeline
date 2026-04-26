@@ -1,0 +1,35 @@
+
+
+# virtual envirionment
+venv/
+.venv/
+
+# Duckdb database - too large if used in github
+
+data/warehouse/
+data/exports/
+
+# secret variables
+.env
+
+# dbt compiled files
+dbt_fx/target/
+dbt_fx/dbt_packages/
+dbt_fx/logs/
+
+#Airflow logs
+airflow/logs/
+
+# python cache files
+__pycache__/
+*.pyc
+
+# os files 
+.DS_Store
+Thumbs.db 
+
+# Airflow databse
+airflow/plugins/
+
+# VS C Setting
+.vscode/

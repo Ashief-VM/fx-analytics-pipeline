@@ -1,0 +1,13 @@
+fx_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../data/warehouse/fx.duckdb
+      threads: 4
+      schema: dev
+    prod:
+      type: duckdb
+      path: /opt/airflow/data/warehouse/fx.duckdb
+      threads: 4
+      schema: prod
