@@ -1,0 +1,17 @@
+currency_code,currency_name,region,currency_symbol,is_major
+EUR,Euro,Europe,€,true
+USD,US Dollar,Americas,$,true
+GBP,British Pound,Europe,£,false
+JPY,Japanese Yen,Asia,¥,true
+CHF,Swiss Franc,Europe,Fr,true
+CAD,Canadian Dollar,Americas,CA$,false
+AUD,Australian Dollar,Oceania,A$,false
+CNY,Chinese Yuan,Asia,¥,false
+INR,Indian Rupee,Asia,₹,true
+BRL,Brazilian Real,Americas,R$,false
+SEK,Swedish Krona,Europe,kr,false
+NOK,Norwegian Krone,Europe,kr,false
+DKK,Danish Krone,Europe,kr,false
+MXN,Mexican Peso,Americas,$,false
+SGD,Singapore Dollar,Asia,S$,false
+HKD,Hong Kong Dollar,Asia,HK$,false

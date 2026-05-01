@@ -1,0 +1,16 @@
+
+version: 2
+models:
+  - name: stg_fx_rates
+    description: 'Cleaned FX rates. View over raw_fx_rates.'
+    columns:
+      - name: rate_key
+        tests: [unique, not_null]
+      - name: rate_date
+        tests: [not_null]
+      - name: base_currency
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['EUR', 'USD', 'INR']

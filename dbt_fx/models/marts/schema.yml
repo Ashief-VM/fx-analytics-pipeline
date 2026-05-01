@@ -1,0 +1,32 @@
+version: 2
+models:
+  - name: fct_exchange_rates
+    description: 'Fact table. Grain: one row per date/base/target.'
+    columns:
+      - name: rate_key
+        tests: [unique, not_null]
+      - name: exchange_rate
+        tests: [not_null]
+      - name: base_currency
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['EUR', 'USD', 'INR']
+      - name: daily_trend
+        tests:
+          - accepted_values:
+              values: ['strengthening', 'weakening', 'unchanged', 'no_data']
+      - name: vs_30d_avg_label
+        tests:
+          - accepted_values:
+              values: ['above_average', 'below_average', 'at_average']
+  - name: dim_currencies
+    description: 'Currency dimension. One row per currency code.'
+    columns:
+      - name: currency_code
+        tests: [unique, not_null]
+  - name: kpi_monthly_summary
+    description: 'Monthly KPI aggregation per currency pair.'
+    columns:
+      - name: avg_rate
+        tests: [not_null]

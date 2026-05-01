@@ -1,0 +1,69 @@
+name: dbt CI Pipeline
+ 
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+ 
+jobs:
+  dbt-validate:
+    name: Run dbt Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+ 
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+ 
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+ 
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+ 
+      - name: Create data directories
+        run: mkdir -p data/warehouse data/exports
+ 
+      - name: Load historical data into DuckDB
+        run: python ingestion/backfill_history.py
+ 
+      - name: dbt debug
+        working-directory: ./dbt_fx
+        run: dbt debug --profiles-dir .
+      - name: dbt seed
+        working-directory: ./dbt_fx
+        run: dbt seed --profiles-dir .
+ 
+      - name: dbt run
+        working-directory: ./dbt_fx
+        run: dbt run --profiles-dir .
+ 
+      - name: dbt test
+        working-directory: ./dbt_fx
+        run: dbt test --profiles-dir .
+ 
+      - name: Generate dbt docs
+        working-directory: ./dbt_fx
+        run: dbt docs generate --profiles-dir .
+ 
+      - name: Upload dbt docs
+        uses: actions/upload-artifact@v4
+        with:
+          name: dbt-docs-${{ github.sha }}
+          path: dbt_fx/target/
+          retention-days: 14
+ 
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dbt-logs-${{ github.sha }}
+          path: dbt_fx/logs/
+          retention-days: 7

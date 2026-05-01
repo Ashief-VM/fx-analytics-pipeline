@@ -1,0 +1,20 @@
+version: 2
+sources:
+  - name: raw
+    schema: raw
+    description: 'Raw FX rates loaded daily from Frankfurter API'
+    tables:
+      - name: raw_fx_rates
+        description: 'One row per date, base currency, and target currency'
+        columns:
+          - name: rate_date
+            tests: [not_null]
+          - name: base_currency
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['EUR', 'USD', 'INR']
+          - name: target_currency
+            tests: [not_null]
+          - name: exchange_rate
+            tests: [not_null]
