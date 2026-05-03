@@ -1,6 +1,6 @@
 # FX Rate Analytics Engineering Pipeline
 
-[![dbt CI](https://github.com/Ashief-VM/fx-analytics-pipeline/actions/workflows/dbt_ci.yml/badge.svg)](https://github.com/Ashief-VM/fx-analytics-pipeline/actions)
+[![dbt CI](https://github.com/Ashief-VM/fx-analytics-pipeline/actions/workflows/dbt_ci.yml/badge.svg?branch=main)](https://github.com/Ashief-VM/fx-analytics-pipeline/actions/workflows/dbt_ci.yml)
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![dbt](https://img.shields.io/badge/dbt-1.8-orange)
 ![Airflow](https://img.shields.io/badge/Airflow-2.8-red)
