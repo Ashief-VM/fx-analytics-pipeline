@@ -7,7 +7,7 @@ import time
 
 WAREHOUSE   = Path('data/warehouse/fx.duckdb')
 BASE_CURRENCIES = ['EUR', 'USD', 'INR']
-TARGET_CURRENCIES = 'GBP,JPY,CHF,CAD,AUD,CNY,BRL,SEK,NOK,DKK,MXN,SGD,HKD'
+TARGET_CURRENCIES = 'USD,GBP,JPY,CHF,CAD,AUD,CNY,BRL,SEK,NOK,DKK,MXN,SGD,HKD'
 START_DATE        = date.today() - timedelta(days=730)
 END_DATE          = date.today()
 API_BASE          = 'https://api.frankfurter.app'

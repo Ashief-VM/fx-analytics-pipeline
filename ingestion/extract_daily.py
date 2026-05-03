@@ -16,7 +16,7 @@ if not WAREHOUSE.parent.exists():
     WAREHOUSE = Path('data/warehouse/fx.duckdb')
  
 BASE_CURRENCIES   = ['EUR', 'USD', 'INR']
-TARGET_CURRENCIES = 'GBP,JPY,CHF,CAD,AUD,CNY,BRL,SEK,NOK,DKK,MXN,SGD,HKD'
+TARGET_CURRENCIES = 'USD,GBP,JPY,CHF,CAD,AUD,CNY,BRL,SEK,NOK,DKK,MXN,SGD,HKD'
 API_BASE          = 'https://api.frankfurter.app'
  
 def fetch_rates(target_date):
